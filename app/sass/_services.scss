@@ -1,0 +1,103 @@
+.services {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 50px;
+
+    &__topheader {
+        flex-wrap: wrap;
+        padding-bottom: 15px;
+
+        a {
+            display: inline-block;
+            position: relative;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            line-height: 17px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            cursor: pointer;
+            color: #24A3FF;
+
+            &::after {
+                content: '';
+                position: absolute;
+                right: -9;
+                top: 50%;
+                transform: translateY(-50%) rotate(-45deg);
+                width: 8px;
+                height: 8px;
+                border-right: 2px solid #24A3FF;
+                border-bottom: 2px solid #24A3FF;
+            }
+        }
+
+        h3 {
+            font-style: normal;
+            font-weight: 700;
+            font-size: 30px;
+            line-height: 1.2em;
+            background: text linear-gradient(90.13deg, #F0145A 0.84%, #EF8080 99.96%);
+            -webkit-text-fill-color: transparent;
+            padding-top: 6px;
+        }
+    }
+
+    &__content {
+        padding: 0 30px 60px 30px;
+        flex-wrap: wrap;
+        margin: 0 -30px; //или 15
+    }
+
+    &__card {
+        width: 100%;
+        padding: 19px 0;
+        display: block;
+
+        &-inset {
+            height: 92px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            margin-bottom: 30px;
+        }
+
+        &-headline {
+            font-weight: 700;
+            font-size: 22px;
+            line-height: 1.2em;
+            color: #24A3FF;
+            margin: 15px 0;
+        }
+
+        &-text {
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 1.6em;
+            color: #FFFFFF;
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .services {
+        &__content {
+            display: flex;
+            justify-content: space-between;
+            margin: 0 -60px;
+        }
+
+        &__card {
+            width: 50%;
+            padding: 30px;
+        }
+    }
+}
+
+@media (min-width: 992px) {
+    .services {
+        &__card {
+            width: 33.333%;
+        }
+    }
+}

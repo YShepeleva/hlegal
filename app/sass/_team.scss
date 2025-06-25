@@ -1,0 +1,129 @@
+.team {
+    overflow: hidden;
+    border-radius: 16px;
+
+  &__frame-wrapper{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: #f5f5fa;
+  }
+
+  &__image-wrap {
+    width: 100%;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+  
+    &__content {
+      padding: 30px;
+    }
+  
+    &__category {
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 1.2em;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: #24A3FF;
+        text-decoration: none;
+        position: relative;
+        margin-bottom: 5px;
+
+        &::after{
+            content: '';
+            position: absolute;
+            right: -9;
+            top: 50%;
+            transform: translateY(-50%) rotate(-45deg);
+            width: 8px;
+            height: 8px;
+            border-right: 2px solid #24A3FF;
+            border-bottom: 2px solid #24A3FF;
+        }
+    }
+  
+    &__text {
+        overflow-wrap: break-word;
+        font-weight: 600;
+        font-size: 30px;
+        line-height: 1.2em;
+        background: linear-gradient(90.13deg, #F0145A 0.84%, #EF8080 99.96%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 30px;
+    }
+  
+    &__name {
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 20px;
+        color: #B3B3BA;
+    }
+  
+    &__role {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 1.2em;
+        color: #B3B3BA;
+        padding-top: 10px;
+    }
+}
+
+@media (min-width: 992px) {
+   .team {
+    &__frame-wrapper {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+    &__image-wrap {
+      width: 45%;
+    }
+    &__content{
+      width: 55%;
+    }
+    &__text {
+      font-size: 36px;
+   }
+}
+}
+
+@media (min-width: 1024px) {
+    .team{
+      &__image-wrap {
+        width: 400px;
+        max-height: 344px;
+    }
+    &__content {
+       width: calc(100% - 400px);
+   }
+  }
+}
+
+@media (min-width: 1440px) {
+  .team {
+    &__image-wrap {
+      width: 400px;
+      max-height: 298px;
+  }
+  
+  &__text {
+    font-size: 39px;
+   }
+  }
+}
+
+
+
+
+  

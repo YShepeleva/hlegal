@@ -41,6 +41,7 @@
     "Firefox ESR"
   ],
   "dependencies": {
-    "del": "^8.0.0"
+    "del": "^8.0.0",
+    "swiper": "^11.2.8"
   }
 }

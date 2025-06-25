@@ -4018,3 +4018,21 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
     return o;
   };
 });
+document.addEventListener('DOMContentLoaded', function () {
+  new Swiper('.team--slider.swiper', {
+    loop: true,
+    autoplay: {
+      delay: 4000
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true
+    }
+  });
+});
+var toggle = document.querySelector('.header__menu-toggle');
+var nav = document.querySelector('.header__nav');
+toggle.addEventListener('click', function () {
+  toggle.classList.toggle('header__menu-toggle--active');
+  nav.classList.toggle('header__nav--active');
+});

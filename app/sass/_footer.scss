@@ -1,0 +1,132 @@
+.footer {
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    background: #F5F5FA;
+    gap: 10px;
+
+    position: relative;
+    &::before {
+        content: '';
+        background: #E6E6F0;
+        top: 0;
+        left: 30px;
+        width: calc(100% - 60px);
+        height: 2px;
+        position: absolute;
+    }
+}
+
+.contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    gap: 10px;
+
+    &__address {
+        display: block;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 1.2em;
+        color: #323264;
+    }
+
+    &__phone,
+    &__email,
+    &__link {
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 1.2em;
+    }
+
+        &__link {
+        display: block;
+        font-size: 14px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: #24A3FF;
+    }
+
+    &__phone {
+        text-align: right;
+        color: #46466E;
+    }
+
+    &__email {
+        color: #24A3FF;
+    }
+
+    &__social {
+        text-decoration: none;
+    }
+
+    &__copyright {
+        &--mobile,
+        &--tablet {
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 20px;
+            text-align: center;
+            color: #B3B3BA;
+        }
+
+        &--tablet{
+            display: none;
+        }
+
+        &--mobile {
+            padding-top: 20px;
+        }
+    }
+}
+
+@media (min-width: 768px) {
+    .contact {
+        &--content-top {
+          flex-direction: row;
+          justify-content: flex-start;
+        }
+    
+        &__copyright {
+          &--tablet {
+            display: flex;
+            margin-left: auto;
+          }
+    
+          &--mobile {
+            display: none;
+          }
+        }
+    
+        &--content-bottom {
+          flex-direction: row;
+          justify-content: flex-start;
+        }
+    
+        & > * {
+          position: relative;
+          padding: 0 10px;
+    
+          & + *::before {
+            content: '•';
+            position: absolute;
+            font-size: 25px;
+            left: -9px;
+            color: #B3B3BA;
+          }
+          
+          &:last-child::before {
+            content: '';
+          }
+        }
+      }
+    }
+
+
+
+
+
+
+
