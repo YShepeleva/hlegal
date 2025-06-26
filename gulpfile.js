@@ -1,3 +1,5 @@
+const fileInclude = require('gulp-file-include'); //footer i header
+
 const gulp = require('gulp'),
     browserSync = require('browser-sync'),
     {sassAsync} = require('gulp5-sass-plugin'),
@@ -103,6 +105,7 @@ gulp.task('css', function () {
 
 gulp.task('html', function () {
     return gulp.src('app/*.html')
+        .pipe(fileInclude({prefix: '@@', basepath: 'app/includes'}))
         .pipe(replace('style.css', 'style.min.css'))
         .pipe(replace('all.js', 'all.min.js'))
         .pipe(htmlMin({ collapseWhitespace: true }))
@@ -145,10 +148,34 @@ gulp.task('watch', function () {
     gulp.watch('app/img/icons/*.svg', gulp.parallel('svg-sprite'));
     gulp.watch('app/js/script.js', gulp.parallel('js', 'js-script'));
     gulp.watch('app/*.html', gulp.parallel('code'));
+    gulp.watch('app/includes/**/*.html', gulp.series('file-include', 'code'));  
 });
 
-gulp.task('default', gulp.parallel('sass', 'js', 'js-script', 'svg-sprite', 'browser-sync', 'watch'));  //  Запускаем задачи в режиме разработки командой gulp
-gulp.task('build', gulp.series('clean', 'css', 'js-prod', 'html', 'optimize-images', 'svg-sprite-prod', 'copy-dist')); //  Собираем проект для продакшена командой gulp build
+// gulp.task('default', gulp.parallel('sass', 'js', 'js-script', 'svg-sprite', 'browser-sync', 'watch'));  //  Запускаем задачи в режиме разработки командой gulp
+
+gulp.task('file-include', function() {
+    return gulp.src('app/*.html')
+      .pipe(fileInclude({
+        prefix: '@@',
+        basepath: 'app'      // ← меняем здесь
+      }))
+      .pipe(gulp.dest('app'));
+  });
+
+  gulp.task('default',
+    gulp.series(
+      'file-include',
+      gulp.parallel(
+        'sass',
+        'js',
+        'js-script',
+        'svg-sprite',
+        'browser-sync',
+        'watch'
+      )
+    )
+  );
+gulp.task('build', gulp.series('file-include', 'clean', 'css', 'js-prod', 'html', 'optimize-images', 'svg-sprite-prod', 'copy-dist')); //  Собираем проект для продакшена командой gulp build
 
 gulp.task('webp', function () {
     return gulp.src("app/img/**/*.{jpg,png}")
@@ -161,3 +188,6 @@ gulp.task('webp-prod', function () {
         .pipe(webp({ quality: 90 }))
         .pipe(gulp.dest("dist/img"))
 });
+
+
+
